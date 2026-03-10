@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property string $name
  * @property string $slug
- * @property int $parent_id
+ * @property string $type
  * @property int $sort
  */
 class Category extends Model
@@ -16,17 +17,12 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
-        'parent_id',
-        'sort'
+        'sort',
+        'type'
     ];
 
-    public function children(): HasMany
+    public function blogs(): BelongsToMany
     {
-        return $this->hasMany(Category::class, 'parent_id');
-    }
-
-    public function scopeParent($query)
-    {
-        return $query->whereNull('parent_id');
+        return $this->belongsToMany(Blog::class);
     }
 }

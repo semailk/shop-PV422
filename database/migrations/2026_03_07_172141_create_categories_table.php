@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');           // название категории
             $table->string('slug')->unique(); // или можно без slug, если не нужен
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('type', 40)
+                ->default('clothing')
+                ->after('name')
+                ->comment('clothing, shoes, accessories, home, other и т.д.');
             $table->integer('sort')->default(0);
             $table->timestamps();
-
-            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

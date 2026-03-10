@@ -4,45 +4,42 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
     public function run(): void
     {
         $categories = [
-            // ────────────── Женская одежда ──────────────
-            ['name' => 'Женская одежда', 'slug' => 'zhenskaya-odezhda', 'parent_id' => null, 'sort' => 10],
+            // ────────────── Основные типы одежды ──────────────
+            ['name' => 'Женская одежда',       'slug' => 'zhenskaya-odezhda',     'type' => 'clothing', 'sort' => 10],
+            ['name' => 'Мужская одежда',       'slug' => 'muzhskaya-odezhda',      'type' => 'clothing', 'sort' => 20],
+            ['name' => 'Детская одежда',       'slug' => 'detskaya-odezhda',       'type' => 'clothing', 'sort' => 30],
+            ['name' => 'Спортивная одежда',    'slug' => 'sportivnaya-odezhda',    'type' => 'clothing', 'sort' => 40],
+            ['name' => 'Домашняя одежда',      'slug' => 'domashnyaya-odezhda',    'type' => 'clothing', 'sort' => 50],
 
-            ['name' => 'Платья',             'slug' => 'platya',              'parent_id' => 1, 'sort' => 10],
-            ['name' => 'Блузки и рубашки',   'slug' => 'bluzki-rubashki',     'parent_id' => 1, 'sort' => 20],
-            ['name' => 'Футболки и топы',    'slug' => 'futbolki-topy',       'parent_id' => 1, 'sort' => 30],
-            ['name' => 'Юбки',               'slug' => 'yubki',               'parent_id' => 1, 'sort' => 40],
-            ['name' => 'Брюки и джинсы',     'slug' => 'bryuki-dzhinsy',      'parent_id' => 1, 'sort' => 50],
-            ['name' => 'Верхняя одежда',     'slug' => 'verhnyaya-odezhda',   'parent_id' => 1, 'sort' => 60],
-            ['name' => 'Нижнее бельё',       'slug' => 'nizhnee-bele',        'parent_id' => 1, 'sort' => 70],
+            // ────────────── Подкатегории женской одежды ──────────────
+            ['name' => 'Платья',               'slug' => 'platya',                 'type' => 'clothing', 'sort' => 101],
+            ['name' => 'Блузки и рубашки',     'slug' => 'bluzki-rubashki',        'type' => 'clothing', 'sort' => 102],
+            ['name' => 'Футболки и топы',      'slug' => 'futbolki-topy',          'type' => 'clothing', 'sort' => 103],
+            ['name' => 'Юбки',                 'slug' => 'yubki',                  'type' => 'clothing', 'sort' => 104],
+            ['name' => 'Брюки и джинсы',       'slug' => 'bryuki-dzhinsy',         'type' => 'clothing', 'sort' => 105],
+            ['name' => 'Верхняя одежда женская','slug' => 'verhnyaya-odezhda-zh',   'type' => 'clothing', 'sort' => 106],
+            ['name' => 'Нижнее бельё',         'slug' => 'nizhnee-bele',           'type' => 'lingerie', 'sort' => 107],
 
-            // ────────────── Мужская одежда ──────────────
-            ['name' => 'Мужская одежда', 'slug' => 'muzhskaya-odezhda', 'parent_id' => null, 'sort' => 20],
+            // ────────────── Подкатегории мужской одежды ──────────────
+            ['name' => 'Футболки и поло',      'slug' => 'futbolki-polo',          'type' => 'clothing', 'sort' => 201],
+            ['name' => 'Рубашки',              'slug' => 'rubashki',               'type' => 'clothing', 'sort' => 202],
+            ['name' => 'Брюки и чиносы',       'slug' => 'bryuki-chinosy',         'type' => 'clothing', 'sort' => 203],
+            ['name' => 'Джинсы мужские',       'slug' => 'dzhinsy-muzhskie',       'type' => 'clothing', 'sort' => 204],
+            ['name' => 'Верхняя одежда мужская','slug' => 'verhnyaya-odezhda-m',    'type' => 'clothing', 'sort' => 205],
 
-            ['name' => 'Футболки и поло',    'slug' => 'futbolki-polo',       'parent_id' => 9, 'sort' => 10],
-            ['name' => 'Рубашки',            'slug' => 'rubashki',            'parent_id' => 9, 'sort' => 20],
-            ['name' => 'Брюки и чиносы',     'slug' => 'bryuki-chinosy',      'parent_id' => 9, 'sort' => 30],
-            ['name' => 'Джинсы',             'slug' => 'dzhinsy',             'parent_id' => 9, 'sort' => 40],
-            ['name' => 'Верхняя одежда',     'slug' => 'verhnyaya-odezhda-m', 'parent_id' => 9, 'sort' => 50],
-            ['name' => 'Спортивная одежда',  'slug' => 'sportivnaya-odezhda', 'parent_id' => 9, 'sort' => 60],
-
-            // ────────────── Детская одежда ──────────────
-            ['name' => 'Детская одежда', 'slug' => 'detskaya-odezhda', 'parent_id' => null, 'sort' => 30],
-
-            ['name' => 'Для девочек', 'slug' => 'dlya-devochek', 'parent_id' => 16, 'sort' => 10],
-            ['name' => 'Для мальчиков', 'slug' => 'dlya-malchikov', 'parent_id' => 16, 'sort' => 20],
-
-            // Дополнительные популярные категории
-            ['name' => 'Спортивная одежда',     'slug' => 'sportivnaya',          'parent_id' => null, 'sort' => 40],
-            ['name' => 'Домашняя одежда',       'slug' => 'domashnyaya',          'parent_id' => null, 'sort' => 50],
-            ['name' => 'Большой размер',        'slug' => 'bolshoy-razmer',       'parent_id' => null, 'sort' => 60],
-            ['name' => 'Аксессуары',            'slug' => 'aksessuary',           'parent_id' => null, 'sort' => 70],
+            // ────────────── Другие популярные категории ──────────────
+            ['name' => 'Обувь',                'slug' => 'obuv',                   'type' => 'shoes',    'sort' => 60],
+            ['name' => 'Аксессуары',           'slug' => 'aksessuary',             'type' => 'accessories', 'sort' => 70],
+            ['name' => 'Сумки',                'slug' => 'sumki',                  'type' => 'accessories', 'sort' => 71],
+            ['name' => 'Большой размер',       'slug' => 'bolshoy-razmer',         'type' => 'clothing', 'sort' => 80],
+            ['name' => 'Детская обувь',        'slug' => 'detskaya-obuv',          'type' => 'shoes',    'sort' => 81],
+            ['name' => 'Головные уборы',       'slug' => 'golovnye-ubory',         'type' => 'accessories', 'sort' => 82],
         ];
 
         foreach ($categories as $category) {

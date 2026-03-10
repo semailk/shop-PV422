@@ -57,77 +57,15 @@
                 <div class="col-md-8">
                     <div class="product_list">
                         <div class="row">
+                            @foreach($products as $product)
                             <div class="col-lg-6 col-sm-6">
                                 <div class="single_product_item">
-                                    <img src="img/categori/product6.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Cervical pillow for airplane
-                                    car office nap pillow</a> </h3>
-                                    <p>From $5</p>
+                                    <img src="{{ $product->getFirstMediaUrl('products') }}" alt="" class="img-fluid">
+                                    <h3> <a href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a> </h3>
+                                    <p>From ${{ $product->price }}</p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="img/categori/product2.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Geometric striped flower home classy decor</a> </h3>
-                                    <p>From $5</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="img/categori/product5.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Foam filling cotton slow rebound pillows</a> </h3>
-                                    <p>From $5</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="img/categori/product6.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                                    <p>From $5</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="img/categori/product1.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                                    <p>From $5</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="img/categori/product4.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Sleeping orthopedic sciatica Back Hip Joint Pain relief</a> </h3>
-                                    <p>From $5</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="img/categori/product5.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Memory foam filling cotton Slow rebound pillows</a> </h3>
-                                    <p>From $5</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="img/categori/product3.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Sleeping orthopedic sciatica Back Hip Joint Pain relief</a> </h3>
-                                    <p>From $5</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="img/categori/product2.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Geometric striped flower home classy decor</a> </h3>
-                                    <p>From $5</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_item">
-                                    <img src="img/categori/product1.png" alt="" class="img-fluid">
-                                    <h3> <a href="../single-product.html">Geometric striped flower home classy decor</a> </h3>
-                                    <p>From $5</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="load_more_btn text-center">
                             <a href="#" class="btn_3">Load More</a>
